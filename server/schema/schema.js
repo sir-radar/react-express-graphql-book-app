@@ -31,7 +31,7 @@ const AuthorType = new GraphQLObjectType({
     name: {type: GraphQLString},
     age: {type: GraphQLInt},
     books:{
-      type: new GraphQLInt(BookType),
+      type: new GraphQLList(BookType),
       resolve(parent, args){
         
       }
@@ -52,6 +52,18 @@ const RootQuery = new GraphQLObjectType({
     author:{
       type: AuthorType,
       args:{id:{type: GraphQLID}},
+      resolve(parent, args){
+
+      }
+    },
+    books:{
+      type: new GraphQLList(BookType),
+      resolve(parent, args){
+        
+      }
+    },
+    authors:{
+      type: new GraphQLList(AuthorType),
       resolve(parent, args){
 
       }
