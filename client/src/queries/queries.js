@@ -19,9 +19,10 @@ const getAuthorsQuery = gql`
 `
 
 //mutations
+//use query viriable to pass data to a mutation : $name
 const addBookMutation = gql`
-  mutation{
-    addBook(name:"", genre:"", authorId:""){
+  mutation($name:String!, $genre:String!, $authorId:ID!){
+    addBook(name:$name, genre:$genre, authorId:$authorId){
       name,
       id
     }

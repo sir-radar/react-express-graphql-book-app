@@ -23,7 +23,13 @@ const AddBook = ({getAuthorsQuery, addBookMutation}) => {
 
   const submitForm = (e) => {
     e.preventDefault();
-    addBookMutation()
+    addBookMutation({
+      variables:{
+        name,
+        genre,
+        authorId
+      }
+    })
   }
 
   return (
