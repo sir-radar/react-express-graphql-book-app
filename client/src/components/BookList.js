@@ -1,8 +1,11 @@
-import React from 'react';
+import React, {useState} from 'react';
 import { graphql } from 'react-apollo';
 import {getBooksQuery} from '../queries/queries'
+import BookDetails from './BookDetails';
 
 const BookList = ({data}) => {
+
+  const [selected, setSelected] = useState('')
 
   const displayBooks = ()=>{
     if(data.loading){
@@ -10,7 +13,7 @@ const BookList = ({data}) => {
     }else{
       return data.books.map(book => {
         return (
-        <li key={book.id}>{book.name}</li>
+        <li onClick={e => setSelected(book.id)} key={book.id}>{book.name}</li>
         )
       })
     }
@@ -21,6 +24,7 @@ const BookList = ({data}) => {
       <ul id="book-list">
         {displayBooks()}
       </ul>
+      <BookDetails bookId={selected}/>
     </div>
   )
 }
