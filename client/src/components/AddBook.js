@@ -35,7 +35,7 @@ const AddBook = ({getAuthorsQuery, addBookMutation}) => {
 
   return (
     <form id="add-book" onSubmit={submitForm}>
-      <div className="fields">
+      <div className="field">
         <label htmlFor="">Book name:</label>
         <input type="text" onChange={ e => setName(e.target.value)}/>
       </div>
